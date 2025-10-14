@@ -13,3 +13,6 @@ We want to build a mini whatsapp app at our TechCrush bootcamp for my super back
 - Caching - redis
 - Testing - jest
 - Database - sequelize and mysql2
+- Error handling
+- RBAC
+- TODO - Push to github
