@@ -11,3 +11,6 @@ export default {
   DATABASE_PORT: Number(process.env.DATABASE_PORT || 3306),
   DATABASE_DIALECT: process.env.DATABASE_DIALECT || "mysql",
 };
+
+// const connect_uri = `mongodb://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`
+// await mongoose.connect(connect_uri);

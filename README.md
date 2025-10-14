@@ -15,4 +15,5 @@ We want to build a mini whatsapp app at our TechCrush bootcamp for my super back
 - Database - sequelize and mysql2
 - Error handling
 - RBAC
+- Webhook
 - TODO - Push to github
