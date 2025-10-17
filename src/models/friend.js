@@ -1,4 +1,4 @@
-import sequelize from "../config/db";
+import sequelize from "../config/db.js";
 import { DataTypes } from "sequelize";
 
 const Friend = sequelize.define(
@@ -22,7 +22,7 @@ const Friend = sequelize.define(
     indexes: [
       {
         unique: true,
-        fields: ["userId", "friendId"],
+        fields: ["user_id", "friend_id"],
       },
     ],
   }

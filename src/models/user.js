@@ -1,4 +1,4 @@
-import sequelize from "../config/db";
+import sequelize from "../config/db.js";
 import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
 
@@ -35,6 +35,11 @@ const User = sequelize.define(
     gender: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    role: {
+      type: DataTypes.ENUM("user", "admin"),
+      allowNull: false,
+      defaultValue: "user",
     },
   },
   {
