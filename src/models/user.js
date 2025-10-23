@@ -34,13 +34,18 @@ const User = sequelize.define(
     },
     gender: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     role: {
       type: DataTypes.ENUM("user", "admin"),
       allowNull: false,
       defaultValue: "user",
     },
+    status: {
+      type: DataTypes.ENUM("active", "inactive", "suspended"),
+      allowNull: false,
+      defaultValue: "active",
+    }
   },
   {
     timestamps: true,

@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from "../config/index";
+import AppError from "../utils/AppError";
 
 const typicodeAPI = axios.create({
   baseURL: config.TYPICODE_BASE_URL,
@@ -13,6 +14,8 @@ const typicodeAPI = axios.create({
 async function getPublicProfiles(userid) {
   try {
     const response = await typicodeAPI.get("/users", { params: { userid } });
+    // if(!response) throw new AppError("No response from Typicode API", 502);
+
     return response;
   } catch (error) {
     console.error("Error fetching public profiles:", error);
