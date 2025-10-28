@@ -40,10 +40,11 @@ const registrationValidator = [
 const loginValidator = [
   body("email")
     .notEmpty()
-    .withMessage("Email is required")
+    .withMessage("Invalid Email or Password")
+    .bail()
     .isEmail()
-    .withMessage("Invalid email format"),
-  body("password").notEmpty().withMessage("Password is required"),
+    .withMessage("Invalid Email or Password"),
+  body("password").notEmpty().withMessage("Invalid Email or Password"),
 ];
 
 export { registrationValidator, loginValidator };

@@ -18,6 +18,10 @@ export default {
   TYPICODE_API_URL:
     process.env.TYPICODE_API_URL || "https://jsonplaceholder.typicode.com",
   TYPICODE_BASE_API_KEY: process.env.TYPICODE_BASE_API_KEY || "",
+  REDIS_TTL: Number(process.env.REDIS_TTL || 300),
+  REDIS_URL: process.env.REDIS_URL || "redis://localhost:6379",
+  JWT_SECRET: process.env.JWT_SECRET || "your_jwt_secret_key",
+  JWT_EXPIRES_IN: Number(process.env.JWT_EXPIRES_IN || 7200),
 };
 
 // const connect_uri = `mongodb://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`

@@ -1,5 +1,9 @@
 import AppError from "../utils/appError.js";
-import { createUser } from "../services/userService.js";
+import {
+  createUser,
+  logUserIntoApp,
+  getUserProfile,
+} from "../services/userService.js";
 
 async function registerUser(req, res) {
   try {
@@ -18,9 +22,15 @@ async function registerUser(req, res) {
   }
 }
 
-function loginUser(req, res) {
-  // Login logic here
-  res.send("User logged in");
+async function loginUser(req, res) {
+  try {
+    console.log("Login request body:", req.body);
+    const { email, password } = req.body;
+    const user = await logUserIntoApp({ email, password });
+    res.status(200).json({ success: true, data: user });
+  } catch (error) {
+    throw new AppError(error || "Invalid Email or Password", 401);
+  }
 }
 
 function changePassword(req, res) {
@@ -38,4 +48,14 @@ function verifyEmailOTP(req, res) {
   res.send("Email OTP verified");
 }
 
-export { registerUser, loginUser, changePassword, getEmailOTP, verifyEmailOTP };
+async function userProfile(req, res) {
+  try {
+    const userUUID = req.user.user_uuid;
+    const profile = await getUserProfile(userUUID);
+    res.status(200).json({ success: true, data: profile });
+  } catch (error) {
+    throw new AppError(error || "Invalid User", 401);
+  }
+}
+
+export { registerUser, loginUser, changePassword, getEmailOTP, verifyEmailOTP, userProfile };

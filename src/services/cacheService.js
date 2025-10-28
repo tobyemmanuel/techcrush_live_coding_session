@@ -1,17 +1,13 @@
-import IORedis from "ioredis";
-import config from "./index.js";
+import redisConfig from "../config/cache.js";
 
-const redis = new IORedis(config.REDIS_URL);
-
-const TTL = config.REDIS_TTL;
-
+const redis = redisConfig.redis || null;
 redis.on("connect", () => {
   console.log("Connected to Redis server");
 });
 
 redis.on("error", (error) => {
-    console.error("Redis error:", error);
-  //   console.log("Error connecting to Redis server");
+//   console.error("Redis error:", error);
+//   console.log("Error connecting to Redis server");
 });
 
 export default {
@@ -20,7 +16,7 @@ export default {
     const data = await redis.get(key);
     return data ? JSON.parse(data) : null;
   },
-  async set(key, value, ttl = TTL) {
+  async set(key, value, ttl = redisConfig.TTL) {
     await redis.set(key, JSON.stringify(value), "EX", ttl);
   },
   async del(key) {
