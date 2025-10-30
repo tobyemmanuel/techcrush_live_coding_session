@@ -8,6 +8,12 @@ const sequelize = new Sequelize(
   config.DATABASE_PASSWORD,
   {
     dialect: config.DATABASE_DIALECT,
+    dialectOptions: {
+      ssl: {
+        require: config.ENVIRONMENT !== "dev" ?? false,
+        rejectUnauthorized: false,
+      },
+    },
     port: config.DATABASE_PORT,
     host: config.DATABASE_HOST,
     logging: (msg) => console.log(msg),
