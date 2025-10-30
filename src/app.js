@@ -4,13 +4,18 @@ import sequelize, { connectDB } from "./config/db.js";
 import models from "./models/index.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import authRoutes from "./routes/auth.js";
+import cors from "cors";
 
 //init express app
 const app = express();
+const corsOptions = {
+  origin: "http://localhost:59940",
+};
 
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 //routes
 app.get("/api/health", (req, res) => {
