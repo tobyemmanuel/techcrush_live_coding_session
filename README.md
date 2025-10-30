@@ -17,3 +17,4 @@ We want to build a mini whatsapp app at our TechCrush bootcamp for my super back
 - RBAC
 - Webhook
 - TODO - Push to github
+- CORS

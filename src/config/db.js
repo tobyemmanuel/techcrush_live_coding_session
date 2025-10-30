@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import config from "./index.js";
+import process from "node:process";
 
 const sequelize = new Sequelize(
   config.DATABASE_NAME,
@@ -20,6 +21,7 @@ export const connectDB = async () => {
     console.log("Database connected");
   } catch (error) {
     console.log("Database error:", error);
+    process.exit(1);
   }
 };
 

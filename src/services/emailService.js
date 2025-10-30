@@ -1,8 +1,9 @@
 import nodemailer from "nodemailer";
-import config from "../config/index";
+import config from "../config/index.js";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import ejs from "ejs";
+import logger from "../utils/Logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +42,7 @@ export async function sendEmail(to, subject, html, text) {
     const sending = await transporter.sendMail(message);
   } catch (error) {
     console.error("Error sending email:", error);
+    logger.error("Error sending email:", error);
   }
 }
 

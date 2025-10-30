@@ -14,6 +14,13 @@ export default function errorHandler(err, req, res, next) {
     });
   }
 
+  // logger.fatal({
+  //   message: err.message,
+  //   stack: err.stack,
+  //   statusCode: statusCode,
+  //   data: err.data || null,
+  // });
+
   res.status(statusCode).json({
     success: false,
     message: err.message || "Internal Server Error",
